@@ -108,6 +108,7 @@ void splotPNG(char* filename)
     return;
 }
 
+#if 0
 void splot(int **image, int x, int y)
 {
   if(!gnu) gnu = popen("gnuplot -persist","w");
@@ -119,11 +120,6 @@ void splot(int **image, int x, int y)
         if (image[j][i] < mn)
             mn = image[j][i];
   }
-  /*  for (auto j=0; j<y; j++){
-       for (auto i=0; i<x; i++)
-           printf("%d %d %d\n", i, j, image[j][i]);
-       fprintf(gnu,"\n");
-       }*/
   fprintf(gnu,"\n");
   fprintf(gnu,"\n");
   fprintf(gnu,"set size square\n");
@@ -147,3 +143,4 @@ void splot(int **image, int x, int y)
   fflush(gnu);
   return;
 }
+#endif
