@@ -1,7 +1,7 @@
-#include "util.h"
 #include <iostream>
 #include <cstring>
 #include <assert.h>
+#include "util.h"
 #include "pngwriter.h"
 
 using namespace std;
