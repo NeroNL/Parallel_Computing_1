@@ -16,6 +16,9 @@ int ComputeMandelbrotPoint(int x, int y, int dimX, int dimY);
 // It will spawn and join threads, calling a thread function that
 // you'll implement
 //
+
+// If the return code is false, disable plotting and reporting which won't
+// work if the multithraded code hasn't been implemented
 bool Mandelbrot_multiThreaded(int** pts, int dimX, int dimY, int numThreads, int chunkSize) 
 {
     cerr << "Not yet implemented.. " << endl;
