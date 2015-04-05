@@ -1,5 +1,4 @@
-# include $(PUB)/Arch/arch.gnu-4.7_c11
-include $(PUB)/Arch/arch.gnu-4.7_c++11.generic
+include $(PUB)/Arch/arch.gnu-c++11.generic
 
 
 # XTRAFLAGS += -fsource-asm -S
@@ -18,7 +17,7 @@ INCLUDES += -DNO_FREETYPE
 
 LDLIBS += -L$(PNG_DIR)/lib -lpng -lpngwriter
 
-UTIL    = Timer.o util.o splot.o
+UTIL    = Timer.o util.o splot.o Plotter.o
 
 OBJ     = main.o pmdb.o smdb.o Report.o cmdLine.o $(UTIL)
 
