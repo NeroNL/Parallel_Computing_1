@@ -4,10 +4,12 @@
 
 using namespace std;
 
-int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, int &imgY, float& re_min, float& im_min, float& re_max, float& im_max, int &doPlot, int &chunkSize, char *filename, bool &verify, int &maxIterations)
+int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, int &imgY, float& re_min, float& im_min, float& re_max, float& im_max, int &doPlot, int &chunkSize, char *filename, bool &verify, int &maxIterations, string &cLine)
 {
   for( int i=1; i < argc; ++i) {
     if(argv[i][0] == '-') {
+      cLine += argv[i];
+      cLine += " ";
       switch(argv[i][1]) {
       case 't':
 	if( i+1 >= argc) {
@@ -15,7 +17,8 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  return 0;
 	}
 	numThreads = atoi(argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
 	break;
 
       case 'i':
@@ -24,7 +27,8 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  return 0;
 	}
 	maxIterations = atoi(argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
 	break;
 
       case 'p':
@@ -38,7 +42,8 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  return 0;
 	}
 	imgX = atoi(argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
 	break;
 
       case 'y':
@@ -47,7 +52,8 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  return 0;
 	}
 	imgY = atoi(argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
 	break;
 
       case 'b':
@@ -55,21 +61,29 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  cout << "missing argument with -b. Usage: mdb -b real_min real_max imaginary_min imaginary_max" << endl;
 	  return 0;
 	}
+        cLine += argv[i+1];
+        cLine += " ";
 	re_min = atof(argv[++i]);
 	if( i+1 >= argc) {
 	  cout << "missing argument with -b. Usage: mdb -b real_min real_max imaginary_min imaginary_max" << endl;
 	  return 0;
 	}
+        cLine += argv[i+1];
+        cLine += " ";
 	re_max = atof(argv[++i]);
 	if( i+1 >= argc) {
 	  cout << "missing argument with -b. Usage: mdb -b real_min real_max imaginary_min imaginary_max" << endl;
 	  return 0;
 	}
+        cLine += argv[i+1];
+        cLine += " ";
 	im_min = atof(argv[++i]);
 	if( i+1 >= argc) {
 	  cout << "missing argument with -b. Usage: mdb -b real_min real_max imaginary_min imaginary_max" << endl;
 	  return 0;
 	}
+        cLine += argv[i+1];
+        cLine += " ";
 	im_max = atof(argv[++i]);
 	break;
 
@@ -79,8 +93,9 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	break;
 
       case 'c':
-	chunkSize = atoi(argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
+	chunkSize = atoi(argv[i]);
 	break;
 	//output to a png file
       case 'o':
@@ -88,8 +103,9 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	  cout << "missing filename with argument -o. Usage: mdb -o \"filename\" " << endl;
 	  return 0;
 	}
-	strcpy(filename, argv[i+1]);
-	i++;
+        cLine += argv[++i];
+        cLine += " ";
+	strcpy(filename, argv[i]);
 	break;
 
       case 'v':
