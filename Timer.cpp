@@ -1,5 +1,9 @@
+//
+// Do not modify this file
+//
 #include <sys/time.h>
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 const double kMicro = 1.0e-6;
 double getTime()
 {
@@ -8,7 +12,7 @@ double getTime()
     const int RC = gettimeofday(&TV, NULL);
     if(RC == -1)
     {
-        printf("ERROR: Bad call to gettimeofday\n");
+        cerr << "ERROR: Bad call to gettimeofday\n";
         return(-1);
     }
 
