@@ -17,7 +17,7 @@ INCLUDES += -DNO_FREETYPE
 
 LDLIBS += -L$(PNG_DIR)/lib -lpng -lpngwriter
 
-UTIL    = Timer.o util.o splot.o Plotter.o
+UTIL    = Timer.o util.o Plotter.o
 
 OBJ     = main.o pmdb.o smdb.o Report.o cmdLine.o $(UTIL)
 
