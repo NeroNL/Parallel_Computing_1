@@ -26,6 +26,7 @@ void ConvertMdbToRGB(int** image, int max, int x, int y,ColorB** rgb);
 
 FILE* gnu = NULL;
 
+#if 0
 void splotMdb(int** image, int max, int x, int y)
 {
   ColorB** rgb = new ColorB*[y];
@@ -106,41 +107,5 @@ void splotPNG(char* filename)
     fflush(gnu);
 
     return;
-}
-
-#if 0
-void splot(int **image, int x, int y)
-{
-  if(!gnu) gnu = popen("gnuplot -persist","w");
-  auto mx= -1, mn = 32768;
-  for (auto j=0; j<y; j++)
-     for (auto i=0; i<x; i++){
-        if (image[j][i] > mx)
-            mx = image[j][i];
-        if (image[j][i] < mn)
-            mn = image[j][i];
-  }
-  fprintf(gnu,"\n");
-  fprintf(gnu,"\n");
-  fprintf(gnu,"set size square\n");
-  fprintf(gnu,"set key off\n");
-  fprintf(gnu,"set pm3d map\n");
-  fprintf(gnu,"set palette defined (-3 \"blue\", 0 \"white\", 1 \"red\")\n");
-  // fprintf(gnu, "set xlabel 'Real'\n");
-  //fprintf(gnu, "set ylabel 'Imaginary'\n");
-    /* Various color schemes
-     * fprintf(gnu,"set palette rgbformulae 22, 13, 31\n");
-     * fprintf(gnu,"set palette rgbformulae 30, 31, 32\n");
-    */
-
-  fprintf(gnu,"splot [0:%d] [0:%d][%d:%d] \"-\"\n",x-1,y-1,mn,mx);
-  for (auto j=0; j<y; j++){
-       for (auto i=0; i<x; i++)
-           fprintf(gnu,"%d %d %d\n", i, j, image[j][i]);
-       fprintf(gnu,"\n");
-  }
-  fprintf(gnu,"e\n");
-  fflush(gnu);
-  return;
 }
 #endif
