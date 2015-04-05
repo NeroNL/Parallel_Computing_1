@@ -6,6 +6,7 @@ using namespace std;
 
 int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, int &imgY, float& re_min, float& im_min, float& re_max, float& im_max, int &doPlot, int &chunkSize, char *filename, bool &verify, int &maxIterations, string &cLine)
 {
+  bool setThreads = false;
   for( int i=1; i < argc; ++i) {
     if(argv[i][0] == '-') {
       cLine += argv[i];
@@ -19,6 +20,7 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	numThreads = atoi(argv[i+1]);
         cLine += argv[++i];
         cLine += " ";
+        setThreads = true;
 	break;
 
       case 'i':
@@ -113,10 +115,23 @@ int cmdLine(int argc, char** argv, int &numThreads, bool &runSerial, int &imgX, 
 	break;
       }
     }
+    else{
+        cerr << "Ignoring illegal option: " <<  argv[i] << endl;
+    }
   }
+
+  // We default to serial if we don't set the # of threads
+  // (But numThreads will always default to 1)
+  if (!setThreads)
+      runSerial = true;
+
   if(numThreads > 1 && runSerial) {
     cout << "incompatible options: -t -s cannot be used together. " << endl;
     return 0;
   }
+  if (numThreads == 1 && (chunkSize != 0)){
+      cerr << "Ignoring chunksize on 1 core" << endl;
+  }
+
   return 1;
 }
