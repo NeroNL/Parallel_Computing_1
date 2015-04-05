@@ -1,3 +1,4 @@
+//
 // Do not change the code in this file, as doing so
 // could cause your submission to be graded incorrectly
 //
@@ -5,11 +6,10 @@
 #include <assert.h>
 #include <fstream>
 #include <iostream>
+#include <cstring>
+#include <string>
 
 using namespace std;
-
-#define FALSE 0
-#define TRUE 1
 
 double getTime();
 void ComputeMandelbrot(int** points, int dimX, int dimY);
@@ -27,7 +27,7 @@ int CompareResults(int** a, int** b, int dimX, int dimY)
   return error;
 }
 
-void ReportMdb(ofstream& logfile, bool runSerial, int numThreads, int chunkSize, bool verify, int** pts, int dimX, int dimY, double ptime)
+void Report(ofstream& logfile, bool runSerial, int numThreads, int chunkSize, bool verify, int** pts, int dimX, int dimY, double ptime, int maxIterations, double *Window)
 
 {
   int error = 0;
@@ -70,6 +70,37 @@ void ReportMdb(ofstream& logfile, bool runSerial, int numThreads, int chunkSize,
     logfile << "Parallel run time: " << ptime << endl;
     cout << "Parallel run time: " << ptime << " sec" <<  endl;
   }
+
+  string OneLiner;
+  OneLiner = "@> ";
+  OneLiner += to_string(maxIterations);
+  OneLiner += " ";
+  OneLiner += to_string(dimX); OneLiner += " ";
+  OneLiner += to_string(dimY); OneLiner += " ";
+  for (int k=0; k<4; k++){
+    OneLiner += to_string(Window[k]);
+  OneLiner += " ";
+  }
+  OneLiner += to_string(Window[1]);
+  OneLiner += " ";
+  if(runSerial) {
+      OneLiner += "S ";
+  }
+  else{
+    OneLiner += "P ";
+    OneLiner += to_string(numThreads); OneLiner += " ";
+    if (chunkSize == 0) 
+        OneLiner += "B";
+    else 
+        OneLiner += "C ";
+        OneLiner += to_string(chunkSize); OneLiner += " ";
+  }
+  OneLiner += " ";
+
+  char * cstr = new char [OneLiner.length()+1];
+  std::strcpy (cstr, OneLiner.c_str());
+  logfile << cstr << endl;
+  cout << cstr << endl;
 
 }
 
