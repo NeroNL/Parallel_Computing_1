@@ -7,7 +7,7 @@ using namespace std;
 
 // Point computation (serial)
 // Implemented in smdb.h
-int ComputeMandelbrotPoint(int x, int y, int dimX, int dimY);
+int ComputeMandelbrotPoint(int x, int y);
 
 // Implement the thread function which will be called by the spawned threads
 //
