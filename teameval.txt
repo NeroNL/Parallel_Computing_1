@@ -1,5 +1,5 @@
             CSE 160, Introduction to Parallel Computation
-                            (Winter 2015)
+                            (Spring 2015)
            Department of Computer Science and Engineering 	
                  University of California, San Diego 	
 
@@ -9,7 +9,7 @@
 Each team must submit one copy of this self evaluation form. 
 The members of each team should discuss how they
 worked together and what to write for the evaluation.
-If you worked along leave column B blank
+If you worked alone leave column B blank
 
 (1) List the names of your team members:
 
