@@ -36,7 +36,7 @@ int ComputeMandelbrotPoint(Complex p)
   return iter;
 }
 
-int ComputeMandelbrotPoint(int x, int y, int dimX, int dimY)
+int ComputeMandelbrotPoint(int x, int y)
 {
   Complex p;
   p.re = re_min + ((float) x * scaleRe);	
@@ -49,5 +49,5 @@ void ComputeMandelbrot(int** points, int dimX, int dimY )
 {
   for(int i=0; i<dimX; i++)
       for(int j=0; j<dimY; j++)		        		
-	points[j][i] = ComputeMandelbrotPoint(i, j, dimX, dimY);               
+	points[j][i] = ComputeMandelbrotPoint(i, j);
 }
