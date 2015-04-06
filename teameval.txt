@@ -1,7 +1,7 @@
-                    CSE 160, Introduction to Parallel Computation
+            CSE 160, Introduction to Parallel Computation
                             (Winter 2015)
-            Department of Computer Science and Engineering 	
-                        University of California, San Diego 	
+           Department of Computer Science and Engineering 	
+                 University of California, San Diego 	
 
 
 		Team Self Evaluation Form, Assignment #1
@@ -31,12 +31,15 @@ total (including meetings)
 
 
 (3) Discuss the following.
-(a) If you worked in a team, what the major responsibilities of each team member were.
-(b) Whether or not you completed the assignment.
-(c) Your major strengths and weaknesses (individually or in a team).
+(a) If you worked in a team, what were the major responsibilities
+    of each team member?
+(b) Did you complete the assignment?
+(c) What were your major strengths and weaknesses in doing this
+    assignment (individually or in a team)?
     If in a team, also discuss how your team worked together.
-(d) The lessons learned from these events.
-(e) If in a team, whether and how you plan to change the way your work together .
+(d) What  lessons did you learn from these events.
+(e) If in a team, whether and how you plan to change the way
+    your work together .
 (f) Anything else that comes to mind.
 
 
