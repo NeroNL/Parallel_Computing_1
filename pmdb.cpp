@@ -48,14 +48,14 @@ bool Mandelbrot_multiThreaded(int** pts, int dimX, int dimY, int numThreads, int
     //BLOCK case
     if(chunkSize == 0 || chunkSize == block){
     	for(int i = 0; i < numThreads; i++){
-            std::thread thrds[i] = thread(ComputeMandelbrotPointXY, pts, i*block, (i+1)*block, dimX);
+            thrds[i] = thread(ComputeMandelbrotPointXY, pts, i*block, (i+1)*block, dimX);
         }
     }
-    //CYCLIC case
+    //CYCLIC case   
     else if(chunkSize > 0 && chunkSize < block){
         int i = 0, j = 0;
         while(j*chunkSize >= dimY){
-            std::thread thrds[i++] = thread(ComputeMandelbrotPointXY, pts, j*chunkSize, (j+1)*chunkSize, dimX);
+            thrds[i++] = thread(ComputeMandelbrotPointXY, pts, j*chunkSize, (j+1)*chunkSize, dimX);
             if(i >= numThreads){
                 i = 0;
             }
