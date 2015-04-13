@@ -67,7 +67,7 @@ bool Mandelbrot_multiThreaded(int** pts, int dimX, int dimY, int numThreads, int
     }
 
 
-    return false;
+    return true;
   //////////// add your code here //////////////////////////////////
 }
 
