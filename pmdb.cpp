@@ -36,7 +36,7 @@ bool Mandelbrot_multiThreaded(int** pts, int dimX, int dimY, int numThreads, int
     // won't function correctly with an empty image.
 
 
-    thread *thrds = new thread[numThreads];
+    std::thread *thrds = new thread[numThreads];
 
     //checking whether chunkSize is too big or too small
     if(chunkSize > dimX || chunkSize > dimY || chunkSize < 0){
